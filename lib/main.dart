@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:first_app/firebase_options.dart';
+import 'package:first_app/views/login_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -32,19 +33,41 @@ class HomePage extends StatelessWidget {
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
-              final user = FirebaseAuth.instance.currentUser;
-              final emailVerified = user?.emailVerified ?? false;
-              if (emailVerified) {
-                print("You are verified user!");
-              } else {
-                print("user not verified, verify email!");
-              }
-              return const Text("Done");
+              return const LoginView();
+            // final user = FirebaseAuth.instance.currentUser;
+            // final emailVerified = user?.emailVerified ?? false;
+            // if (emailVerified) {
+            //   return const Text("Done");
+            // } else {
+            //   return const VerifyEmailView();
+            // }
             default:
               return const Text("Loading...");
           }
         },
       ),
     );
+  }
+}
+
+class VerifyEmailView extends StatefulWidget {
+  const VerifyEmailView({super.key});
+
+  @override
+  State<VerifyEmailView> createState() => _VerifyEmailViewState();
+}
+
+class _VerifyEmailViewState extends State<VerifyEmailView> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      const Text("Verify Email"),
+      TextButton(
+          onPressed: () async {
+            final user = FirebaseAuth.instance.currentUser;
+            await user?.sendEmailVerification();
+          },
+          child: const Text("Send verification email")),
+    ]);
   }
 }
