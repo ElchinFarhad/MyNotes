@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1011305826733",
+    "project_id": "my-notes-elchin",
+    "storage_bucket": "my-notes-elchin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011305826733:android:2b86a310d0c03ea288f924",
+        "android_client_info": {
+          "package_name": "com.elc"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfQ2vj_87UChUF1YkTKHu-kl-DEYLiX78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1011305826733:android:2d2db02f3c4b14fc88f924",
+        "android_client_info": {
+          "package_name": "com.elchin.mynotes"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAfQ2vj_87UChUF1YkTKHu-kl-DEYLiX78"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
