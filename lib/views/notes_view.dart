@@ -5,6 +5,8 @@ import 'package:first_app/constants/routes.dart';
 import 'package:first_app/main.dart';
 import 'package:flutter/material.dart';
 
+import '../enum/menu_list.dart';
+
 class NotesView extends StatefulWidget {
   const NotesView({super.key});
 
