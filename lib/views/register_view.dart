@@ -72,6 +72,7 @@ class _RegisterViewState extends State<RegisterView> {
                   log("Unkonw error");
                 }
               }
+              
             },
             child: const Text('Register'),
           ),
