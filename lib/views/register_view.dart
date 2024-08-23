@@ -1,7 +1,10 @@
 // ignore_for_file: use_build_context_synchronously
 
-import 'package:firebase_auth/firebase_auth.dart';
+import 'dart:developer';
+
 import 'package:first_app/constants/routes.dart';
+import 'package:first_app/services/auth/auth_exceptions.dart';
+import 'package:first_app/services/auth/auth_service.dart';
 import 'package:first_app/utilities/show_error_dialog.dart';
 import 'package:flutter/material.dart';
 
@@ -56,21 +59,33 @@ class _RegisterViewState extends State<RegisterView> {
             onPressed: () async {
               final email = _email.text;
               final password = _password.text;
-
               try {
-                await FirebaseAuth.instance.createUserWithEmailAndPassword(
+                await AuthService.firebase().createUser(
                   email: email,
                   password: password,
                 );
-                final user = FirebaseAuth.instance.currentUser;
-                user?.sendEmailVerification();
+                AuthService.firebase().sendEmailVerification();
                 Navigator.of(context).pushNamed(verifyEmailRoute);
-              } on FirebaseAuthException catch (e) {
-
-              } catch (e) {
+              } on WeakPasswordAuthException {
                 await showErrorDialog(
                   context,
-                  "Error: ${e.toString()}",
+                  "Weak Password",
+                );
+              } on EmailAlreadyInUseAuthException {
+                await showErrorDialog(
+                  context,
+                  "Email already in use",
+                );
+              } on InvalidEmailAuthException {
+                log("check invalid email auth exception");
+                await showErrorDialog(
+                  context,
+                  "Invalid Email",
+                );
+              } on GenericAuthException {
+                await showErrorDialog(
+                  context,
+                  "Failed to register!",
                 );
               }
             },
