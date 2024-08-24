@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:first_app/constants/routes.dart';
-import 'package:first_app/firebase_options.dart';
 import 'package:first_app/services/auth/auth_service.dart';
 import 'package:first_app/views/login_view.dart';
 import 'package:first_app/views/register_view.dart';
